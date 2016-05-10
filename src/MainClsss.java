@@ -1,4 +1,7 @@
-package our_calc;
+package calca;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,10 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.math.*;
-import java.util.*;
 
-public class Our_calc extends Application{
+public class Calca extends Application{
 	 TextArea textarea=new TextArea();
 	    String showExpression = "";
 	    String hiddenExpression = "";
@@ -21,7 +22,7 @@ public class Our_calc extends Application{
 	    boolean isequal=false;
 	    int countOpen = 0;
 	    int countClose = 0;
-    VBox vbox2; //design pane
+            VBox vbox2; //design pane
 	
 	 @Override
 	 public void start(Stage arg0) throws Exception {
@@ -31,7 +32,6 @@ public class Our_calc extends Application{
 		
 		 arg0.setTitle("Calcluator");
 		 arg0.setScene(scene);
-		arg0.setFullScreen(true);
 		 arg0.show();
 		
 		arg0.setOnCloseRequest(e->{
@@ -65,7 +65,7 @@ public class Our_calc extends Application{
 		 Button close =new Button(")");
 		 Button clear =new Button("C");
 		 Button zero =new Button("0");
-		 Button reset=new Button("R");// end of button
+		 Button reset=new Button("Reset");// end of button
 		
 		 HBox hbox1=new HBox();
 		 hbox1.setSpacing(2);
@@ -83,7 +83,7 @@ public class Our_calc extends Application{
 		 hbox4.getChildren().addAll(zero,dot,mod,plus,minus);
 		
 		hbox5.getChildren().addAll(square,sqrt,equal);
-		one.prefWidthProperty().bind(hbox1.widthProperty().divide(5));
+		 one.prefWidthProperty().bind(hbox1.widthProperty().divide(5));
 		 one.prefHeightProperty().bind(hbox1.heightProperty());
 		two.prefWidthProperty().bind(hbox1.widthProperty().divide(5));
 		 two.prefHeightProperty().bind(hbox1.heightProperty());
@@ -147,600 +147,604 @@ public class Our_calc extends Application{
 
 		 	textarea.prefWidthProperty().bind(vbox.widthProperty());
 		 	textarea.prefHeightProperty().bind(vbox.heightProperty().divide(6));			
-		
-///////////////////////////////////////////////////////////////// one button is clicked
-one.setOnAction(e->{
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')' )) {
-showExpression += "1";
-hiddenExpression += "1";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "1";
-hiddenExpression = "1";
-textarea.setText(showExpression);
-isequal=false;
-}
+		///////////////////////////////////////////////////////////////// one button is clicked
+		 one.setOnAction(e->{
+                     
+                     //fsqrt=0; fsquare=0;fmul=0;fmin=0;fplus=0;fdiv=0;fmod=0;
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "1";
+                 hiddenExpression += "1";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "1";
+                 hiddenExpression = "1";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
 
-});
-///////////////////////////////////////////////////////////////// two button is clicked
-two.setOnAction(e->{
+		 });
+                 ///////////////////////////////////////////////////////////////// two button is clicked
+		 two.setOnAction(e->{
+                    
 
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "2";
+                 hiddenExpression += "2";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "2";
+                 hiddenExpression = "2";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// three button is clicked
+		 three.setOnAction(e->{
+                    
 
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')' )) {
-showExpression += "2";
-hiddenExpression += "2";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "2";
-hiddenExpression = "2";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-///////////////////////////////////////////////////////////////// three button is clicked
-three.setOnAction(e->{
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "3";
+                 hiddenExpression += "3";
+                 textarea.setText(showExpression);
 
+             }
+             if(isequal){
+            	 showExpression = "3";
+                 hiddenExpression = "3";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// four button is clicked
+		 four.setOnAction(e->{
+                   
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "4";
+                 hiddenExpression += "4";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "4";
+                 hiddenExpression = "4";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+		 five.setOnAction(e->{
+                     
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "5";
+                 hiddenExpression += "5";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "5";
+                 hiddenExpression = "5";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// six button is clicked
+		 six.setOnAction(e->{
+                     
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "6";
+                 hiddenExpression += "6";
+                 textarea.setText(showExpression);
+             } 
+             if(isequal){
+            	 showExpression = "6";
+                 hiddenExpression = "6";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+		 seven.setOnAction(e->{
+                    
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "7";
+                 hiddenExpression += "7";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "7";
+                 hiddenExpression = "7";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+         });
+                 ///////////////////////////////////////////////////////////////// eight button is clicked
+		 eight.setOnAction(e->{
+                    
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "8";
+                 hiddenExpression += "8";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "8";
+                 hiddenExpression = "8";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+         
+		 });
+                 ///////////////////////////////////////////////////////////////// nine button is clicked
+		 nine.setOnAction(e->{
+                     
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
+                 showExpression += "9";
+                 hiddenExpression += "9";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "9";
+                 hiddenExpression = "9";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// Zero button is clicked
+		 zero.setOnAction(e->{
+                    
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
 
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')' )) {
-showExpression += "3";
-hiddenExpression += "3";
-textarea.setText(showExpression);
+                 showExpression += "0";
+                 hiddenExpression += "0";
+                 textarea.setText(showExpression);
 
-}
-if(isequal){
-showExpression = "3";
-hiddenExpression = "3";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-///////////////////////////////////////////////////////////////// four button is clicked
-four.setOnAction(e->{
+             }
+             if(isequal){
+            	 showExpression = "0";
+                 hiddenExpression = "0";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// dot button is clicked
+		 dot.setOnAction(e->{
+			 
+			 char ch = ' ';
+             if (!showExpression.equals("")) {
+                 ch = showExpression.charAt(showExpression.length() - 1);
+             }
+             if ((ch != ')' && isSquare == false)) {
 
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "4";
-hiddenExpression += "4";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "4";
-hiddenExpression = "4";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-five.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "5";
-hiddenExpression += "5";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "5";
-hiddenExpression = "5";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-///////////////////////////////////////////////////////////////// six button is clicked
-six.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "6";
-hiddenExpression += "6";
-textarea.setText(showExpression);
-} 
-if(isequal){
-showExpression = "6";
-hiddenExpression = "6";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-seven.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "7";
-hiddenExpression += "7";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "7";
-hiddenExpression = "7";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-///////////////////////////////////////////////////////////////// eight button is clicked
-eight.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "8";
-hiddenExpression += "8";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "8";
-hiddenExpression = "8";
-textarea.setText(showExpression);
-isequal=false;
-}
-
-});
-///////////////////////////////////////////////////////////////// nine button is clicked
-nine.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-showExpression += "9";
-hiddenExpression += "9";
-textarea.setText(showExpression);
-}
-if(isequal){
-showExpression = "9";
-hiddenExpression = "9";
-textarea.setText(showExpression);
-isequal=false;
-}
-});
-///////////////////////////////////////////////////////////////// Zero button is clicked
-zero.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-
-showExpression += "0";
-hiddenExpression += "0";
-textarea.setText(showExpression);
-
-}
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression += "";
-}
-else{
-showExpression += "/";
-hiddenExpression += "/";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
-});
-///////////////////////////////////////////////////////////////// dot button is clicked
-dot.setOnAction(e->{
-
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if ((ch != ')')) {
-if(showExpression.equals("")){
-showExpression += "0.";
-hiddenExpression += "0.";
-textarea.setText(showExpression);
-}
-else{
-	showExpression += ".";
-	hiddenExpression += ".";
-	textarea.setText(showExpression);
+                 showExpression += ".";
+                 hiddenExpression += ".";
+                 textarea.setText(showExpression);
+             }
+             if(isequal){
+            	 showExpression = "0.";
+                 hiddenExpression = "0.";
+                 textarea.setText(showExpression);
+                 isequal=false;
+             }
 	
-}
-}
-if(isequal){
-showExpression = "0.";
-hiddenExpression = "0.";
-textarea.setText(showExpression);
-isequal=false;
-}
+		 });
+                 ///////////////////////////////////////////////////////////////// plus button is clicked
+		 plus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                char ch = ' ';
+               
+                  ch = showExpression.charAt(showExpression.length() - 1);
+            
+         if(isequal){
+             if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+             else{
+    	 showExpression += "+";
+         hiddenExpression += "+";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+               }
+         else {
+    	 showExpression += "+";
+         hiddenExpression += "+";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+     if(showExpression==""){
+//    	 showExpression = "0+";
+//         hiddenExpression = "0+";
+//         textarea.setText(showExpression); 
+     }
 
-});
-///////////////////////////////////////////////////////////////// plus button is clicked
-plus.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-char ch = ' ';
+            }
+                 catch(Exception e)
+                {
+                }
+            }
+        });
+                 ///////////////////////////////////////////////////////////////// minus button is clicked
+ minus.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                   // fmin=1;if(isequal){
+            if(isequal){
+             if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+             else{
+    	 showExpression += "-";
+         hiddenExpression += "-";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+     }
+     else if(showExpression==""){
+//    	 showExpression = "0-";
+//         hiddenExpression = "0-";
+//         textarea.setText(showExpression); 
+     }
+     else{
+	 showExpression += "-";
+     hiddenExpression += "-";
+     textarea.setText(showExpression);
+     isSquare = false;	 
+     }
+                
+                
+            }
+                 catch(Exception e)
+                {
+                }
+            }
+        });
+ ///////////////////////////////////////////////////////////////// div button is clicked
+ div.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                char ch = showExpression.charAt(showExpression.length() - 1);
+         if(isequal){
+             if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+             else{
+    	 showExpression += "/";
+         hiddenExpression += "/";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+     }
+     
+     else if (Character.isDigit(ch) || ch == ')') {
+         showExpression += "/";
+         hiddenExpression += "/";
+         textarea.setText(showExpression);
+         isSquare = false;
+     }
+     else if(showExpression==""){
+//    	 showExpression = "0/";
+//         hiddenExpression = "0/";
+//         textarea.setText(showExpression); 
+     }     
+                }
+                 catch(Exception e)
+                {
+                }
+                 
+            }
+        });
+ ///////////////////////////////////////////////////////////////// mul button is clicked
+ mul.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                
+	 char ch = showExpression.charAt(showExpression.length() - 1);
+    
+      if(isequal){
+             if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+             else{
+    	 showExpression += "*";
+         hiddenExpression += "*";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+     }
+      else if (Character.isDigit(ch) || ch == ')') {
+         showExpression += "*";
+         hiddenExpression += "*";
+         textarea.setText(showExpression);
+         isSquare = false;
+     }
+     else if(showExpression==""){
+//    	 showExpression = "0*";
+//         hiddenExpression = "0*";
+//         textarea.setText(showExpression); 
+     }             }
+                 catch(Exception e)
+                {
+                }
+                 
+            }
 
-ch = showExpression.charAt(showExpression.length() - 1);
-
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-else{
-showExpression += "+";
-hiddenExpression += "+";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
-//else if(showExpression.){
-//showExpression = "0+";
-//hiddenExpression = "0+";
-//textarea.setText(showExpression); 
-//}
-
-else if (Character.isDigit(ch) || ch == ')') {
-showExpression += "+";
-hiddenExpression += "+";
-textarea.setText(showExpression);
-isSquare = false;
-}
-}
-catch(Exception e)
-{
-}
-}
-});
-///////////////////////////////////////////////////////////////// minus button is clicked
-minus.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-//  fmin=1;
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-else{
-showExpression += "-";
-hiddenExpression += "-";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
-else if(showExpression==""){
-//showExpression = "0-";
-//hiddenExpression = "0-";
-//textarea.setText(showExpression); 
-}
-else{
-showExpression += "-";
-hiddenExpression += "-";
-textarea.setText(showExpression);
-isSquare = false;	 
-}
-
-}
-catch(Exception e)
-{
-}
-}
-});
-///////////////////////////////////////////////////////////////// div button is clicked
-div.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-//fdiv=1;
-char ch = showExpression.charAt(showExpression.length() - 1);
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-else{
-showExpression += "/";
-hiddenExpression += "/";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
-
-else if (Character.isDigit(ch) || ch == ')') {
-showExpression += "/";
-hiddenExpression += "/";
-textarea.setText(showExpression);
-isSquare = false;
-}
-else if(showExpression==""){
-//showExpression = "0/";
-//hiddenExpression = "0/";
-//textarea.setText(showExpression); 
-}
-}
-catch(Exception e)
-{
-}
-
-}
-});
-///////////////////////////////////////////////////////////////// mul button is clicked
-mul.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-
-char ch = showExpression.charAt(showExpression.length() - 1);
-
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-else{
-showExpression += "*";
-hiddenExpression += "*";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
-else if (Character.isDigit(ch) || ch == ')') {
-showExpression += "*";
-hiddenExpression += "*";
-textarea.setText(showExpression);
-isSquare = false;
-}
-else if(showExpression==""){
-//showExpression = "0*";
-//hiddenExpression = "0*";
-//textarea.setText(showExpression); 
-}
-}
-catch(Exception e)
-{
-}
-
-}
-
-});
-///////////////////////////////////////////////////////////////// mod button is clicked
+ });
+ ///////////////////////////////////////////////////////////////// mod button is clicked
 mod.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-// fmod=1;
-char ch = showExpression.charAt(showExpression.length() - 1);
-if(isequal){
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-else{
-showExpression += "%";
-hiddenExpression += "%";
-textarea.setText(showExpression);
-isequal=false;
-}
-}
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                // fmod=1;
+	  char ch = showExpression.charAt(showExpression.length() - 1);
+         if(isequal){
+             if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+             else{
+    	 showExpression += "%";
+         hiddenExpression += "%";
+         textarea.setText(showExpression);
+         isequal=false;
+             }
+     }
+         
+     else if (Character.isDigit(ch) || ch ==')') {
 
-else if (Character.isDigit(ch) || ch ==')') {
-
-showExpression += "%";
-hiddenExpression += "%";
-textarea.setText(showExpression);
-isSquare = false;
-} 
-if(showExpression==""){
-//showExpression = "0%";
-//hiddenExpression = "0%";
-//textarea.setText(showExpression); 
-}
-}
-catch(Exception e)
-{
-}
-}
-});
+         showExpression += "%";
+         hiddenExpression += "%";
+         textarea.setText(showExpression);
+         isSquare = false;
+     } 
+     if(showExpression==""){
+//    	 showExpression = "0%";
+//         hiddenExpression = "0%";
+//         textarea.setText(showExpression); 
+     }
+            }
+                 catch(Exception e)
+                {
+                }
+            }
+        });
 ///////////////////////////////////////////////////////////////// sqrt button is clicked
-sqrt.setOnAction(new EventHandler<ActionEvent>(){  
+ sqrt.setOnAction(new EventHandler<ActionEvent>(){  
+   
+            @Override
+            public void handle(ActionEvent event) {  
+                
+     try {
+           
+     if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";
+             }
+        
+        else if (showExpression.equals("")) {
 
-@Override
-public void handle(ActionEvent event) {  
+         showExpression += "√";
+         hiddenExpression += "|";
+         textarea.setText(showExpression);
 
-try {
-// isSquare=true;
-	char ch = ' ';
-	if (!showExpression.equals(""))
-	ch = showExpression.charAt(showExpression.length() - 1);
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";
-}
-
-else if(Character.isDigit(ch)) 
+     }
+           char ch = ' ';
+    ch = showExpression.charAt(showExpression.length() - 1);
+     if(Character.isDigit(ch)) 
 {
 	if(isequal){
-		showExpression = "√";
-		hiddenExpression = "|";
-		textarea.setText(showExpression);
-		isequal=false;
+		textarea.setText("error expression");
+                showExpression = "";
+        hiddenExpression = "";
 	}
-	else{
-textarea.setText("error expression");
-showExpression = "";
-hiddenExpression = "";
-	}
-	}
-else {
+        else  {
 
 showExpression += "√";
 hiddenExpression += "|";
 textarea.setText(showExpression);
 
-}
-}catch (Exception e) {
-}
 
-}
+	}
+      
+       /*  {
 
-});
+showExpression += "√";
+hiddenExpression += "|";
+textarea.setText(showExpression);
+
+}*/
+}
+       
+       
+     }catch (Exception e) {
+     }
+ 
+            }
+     
+ });
 textarea.setEditable(false);
 
 ///////////////////////////////////////////////////////////////// square button is clicked
-square.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try {
-	char lastChar=' ';	
-if(!showExpression.equals(""))
- lastChar = showExpression.charAt(showExpression.length() - 1);
-
-if (Character.isDigit(lastChar)) {
-String number = "";
-String swapNumber = "";
-String str = textarea.getText();
-for (int i = str.length() - 1; i >= 0; i--) {
-char ch = str.charAt(i);
-if (Character.isDigit(ch)) {
-number += ch;
-} else {
-break;
-}
-}
-for (int i = number.length() - 1; i >= 0; i--) {
-char ch = number.charAt(i);
-swapNumber += ch;
-}
-hiddenExpression += "*" + Double.parseDouble(swapNumber);
-showExpression += "^2";
-textarea.setText(showExpression);
-isSquare = true;	} 
-} catch (Exception e) {
-}
-}
-
-
-
-});
-///////////////////////////////////////////////////////////////// clear button is clicked
-clear.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try {
-if(showExpression.equals("error expression")){
-textarea.clear();}
-char ch = ' ';
-if (!showExpression.equals("")) {
-ch = showExpression.charAt(showExpression.length() - 1);
-}
-if (ch == ')') {
-countClose--;
-} else if (ch == '(') {
-countOpen--;
-if (countOpen == 0);
-isOpen = false;
-}
-
-String str = textarea.getText();
-String newStr = str.substring(0, showExpression.length() - 1);
-showExpression = newStr;
-hiddenExpression = hiddenExpression.substring(0, hiddenExpression.length() - 1);
-textarea.setText(showExpression);
-
-} catch (Exception e) {
-}
-}
-
-
-
-});
-///////////////////////////////////////////////////////////////// reset button is clicked
-reset.setOnAction(e->{
-
-textarea.setText("");
-showExpression = "";
-hiddenExpression = "";
-isOpen = false;
-isSquare = false;
-countClose = 0;
-countOpen = 0;
-
-});
-open.setOnAction(e->{
-char ch1 = ' ';
-if(showExpression.equals("error expression")){
-showExpression = "";
-hiddenExpression = "";}
-if (!showExpression.equals("")) {
-ch1 = showExpression.charAt(showExpression.length() - 1);
-}
-if (((!Character.isDigit(ch1) && isSquare == false) && ch1 != ')') || ch1 == ' ') {
-showExpression += "(";
-hiddenExpression += "(";
-textarea.setText(showExpression);
-isOpen = true;
-countOpen++;
-}
-});
-///////////////////////////////////////////////////////////////// close brackets button is clicked
-close.setOnAction(e->{
-if (isOpen) {
-showExpression += ")";
-hiddenExpression += ")";
-textarea.setText(showExpression);
-countClose++;
-}
-});
-///////////////////////////////////////////////////////////////// equal button is clicked
-
-equal.setOnAction(new EventHandler<ActionEvent>() {
-@Override
-public void handle(ActionEvent event) {
-try{
-if (countClose != countOpen) {
-textarea.setText("error expression");
-showExpression = "";
-hiddenExpression = "";
-} else {
-
-EvaluteExpression ev = new EvaluteExpression();
-hiddenExpression = ev.brackets(hiddenExpression);
-textarea.setText(hiddenExpression);
-showExpression = hiddenExpression;
+ square.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                  //  fsquare=1;
+                   char lastChar = showExpression.charAt(showExpression.length() - 1);
  
-isequal=true;
-}
-}
-catch(Exception e)
-{
-}
-}
-});
+ if (Character.isDigit(lastChar)) {
+     String number = "";
+     String swapNumber = "";
+     String str = textarea.getText();
+     for (int i = str.length() - 1; i >= 0; i--) {
+         char ch = str.charAt(i);
+         if (Character.isDigit(ch)) {
+             number += ch;
+         } else {
+             break;
+         }
+     }
+     for (int i = number.length() - 1; i >= 0; i--) {
+         char ch = number.charAt(i);
+         swapNumber += ch;
+     }
+     hiddenExpression += "*" + swapNumber;
+     showExpression += "^2";
+     textarea.setText(showExpression);
+     isSquare = true;	} 
+                } catch (Exception e) {
+                }
+            }
+     
+	 
+ 
+ });
+ ///////////////////////////////////////////////////////////////// clear button is clicked
+ clear.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                   if(showExpression.equals("error expression")){
+         textarea.clear();}
+                 char ch = ' ';
+     if (!showExpression.equals("")) {
+         ch = showExpression.charAt(showExpression.length() - 1);
+     }
+     if (ch == ')') {
+         countClose--;
+     } else if (ch == '(') {
+         countOpen--;
+         if (countOpen == 0);
+         isOpen = false;
+     }
+
+     String str = textarea.getText();
+     String newStr = str.substring(0, showExpression.length() - 1);
+     showExpression = newStr;
+     hiddenExpression = hiddenExpression.substring(0, hiddenExpression.length() - 1);
+     textarea.setText(showExpression);
+	
+                } catch (Exception e) {
+                }
+            }
+     
+	 
+ 
+ });
+   ///////////////////////////////////////////////////////////////// reset button is clicked
+ reset.setOnAction(e->{
+     
+	 textarea.setText("");
+     showExpression = "";
+     hiddenExpression = "";
+     isOpen = false;
+     isSquare = false;
+     countClose = 0;
+     countOpen = 0;
+
+ });
+		 open.setOnAction(e->{
+		 char ch1 = ' ';
+                  if(showExpression.equals("error expression")){
+                 showExpression = "";
+         hiddenExpression = "";}
+             if (!showExpression.equals("")) {
+                 ch1 = showExpression.charAt(showExpression.length() - 1);
+             }
+             if (((!Character.isDigit(ch1) && isSquare == false) && ch1 != ')') || ch1 == ' ') {
+                 showExpression += "(";
+                 hiddenExpression += "(";
+                 textarea.setText(showExpression);
+                 isOpen = true;
+                 countOpen++;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// close brackets button is clicked
+		 close.setOnAction(e->{
+			 if (isOpen) {
+                 showExpression += ")";
+                 hiddenExpression += ")";
+                 textarea.setText(showExpression);
+                 countClose++;
+             }
+		 });
+                 ///////////////////////////////////////////////////////////////// equal button is clicked
+		
+                 equal.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try{
+                if (countClose != countOpen) {
+                 textarea.setText("error expression");
+                 showExpression = "";
+                 hiddenExpression = "";
+             } else {
+
+                 EvaluteExpression ev = new EvaluteExpression();
+                 hiddenExpression = ev.brackets(hiddenExpression);
+                 textarea.setText(hiddenExpression);
+                 showExpression = hiddenExpression;
+//                 if(fdiv==1 || fmin==1|| fmod==1||fmul==1||fplus==1||fsqrt==1||fsquare==1){
+//                 //showExpression = hiddenExpression;
+//                 
+//                 }else{
+//                 showExpression ="";
+//                 hiddenExpression="";
+//                 }
+                 
+                 isequal=true;
+             }
+            }
+                 catch(Exception e)
+                {
+                }
+            }
+        });
 		return vbox;
 
 
@@ -751,14 +755,16 @@ catch(Exception e)
 		 Application.launch(args);
 	 }
 }
-class EvaluteExpression {
+
+ class EvaluteExpression {
 
     ArrayList<String> contents;
     String item;
     EvaluteExpression check;
 
-    public String brackets(String s) {
+    public  <E> E brackets(E e) {
         check = new EvaluteExpression();
+        String s=e.toString();
         while (s.contains(Character.toString('(')) || s.contains(Character.toString(')'))) {
             for (int i =  s.length()-1; i >=0; i--) {
                 if (s.charAt(i) == ')') {
@@ -774,17 +780,15 @@ class EvaluteExpression {
             }
 
         }
-        if(check.recognize(s)==null)
-        return "error Expression";
-        else{
-        	s = check.recognize(s);
-        return s;
-        }
+        s = check.recognize(s);
+        
+        return (E)s;
     }
 
-    public String recognize(String s) {
+    public <E> E recognize(E e) {
         PutIt putIt = new PutIt();
         contents = new ArrayList<String>();
+        String s=e.toString();
         item = "";
         for (int i = s.length() - 1; i >= 0; i--) {
             if (Character.isDigit(s.charAt(i))) {
@@ -809,24 +813,10 @@ class EvaluteExpression {
                 }
             }
         }
-        if(putIt.result(contents, "^", "|")==(null))
-        	return null;
-        else
-        contents = putIt.result(contents, "^", "|");
-        if(putIt.result(contents, "*", "/")==(null))
-        	return null;
-        else
+        contents = putIt.result(contents, "^", "%");
         contents = putIt.result(contents, "*", "/");
-        if(putIt.result(contents, "%", "/")==(null))
-        	return null;
-        else
-        contents = putIt.result(contents, "%", "/");
-        if(putIt.result(contents, "+", "-")==(null))
-        	return null;
-        else
-        	
         contents = putIt.result(contents, "+", "-");
-        return contents.get(0);
+        return (E)contents.get(0);
     }
 
     public class PutIt {
@@ -840,30 +830,29 @@ class EvaluteExpression {
 
         public ArrayList<String> result(ArrayList<String> arrayList, String op1, String op2) {
             int scale = 10;
+            String e="";
             BigDecimal result = new BigDecimal(0);
             for (int c = 0; c < arrayList.size(); c++) {
                 if (arrayList.get(c).equals(op1) || arrayList.get(c).equals(op2)) {
-          /*here*/   	if(c+1 >= arrayList.size())
-                		return null;
-                	else{
                     if (arrayList.get(c).equals("|")) {
                         result = new BigDecimal(Math.sqrt(Double.parseDouble(arrayList.get(c + 1))));
                     } else if (arrayList.get(c).equals("*")) {
                         result = new BigDecimal(arrayList.get(c - 1)).multiply(new BigDecimal(arrayList.get(c + 1)));
                     } else if (arrayList.get(c).equals("/")) {
-       /*here*/             	if(arrayList.get(c + 1).equals("0")){
-                    		return null;
-                    	}
-                   else
+                        if(arrayList.get(c +1).equals("0")){//divide by zero
+                                e="error expression";
+                               arrayList.clear();
+                               arrayList.add(e);
+                               return arrayList;
+                        }
                         result = new BigDecimal(arrayList.get(c - 1)).divide(new BigDecimal(arrayList.get(c + 1)), scale, BigDecimal.ROUND_DOWN);
                     } else if (arrayList.get(c).equals("+")) {
                         result = new BigDecimal(arrayList.get(c - 1)).add(new BigDecimal(arrayList.get(c + 1)));
                     } else if (arrayList.get(c).equals("-")) {
                         result = new BigDecimal(arrayList.get(c - 1)).subtract(new BigDecimal(arrayList.get(c + 1)));
                     } else if (arrayList.get(c).equals("%")) {
-                    	BigDecimal d=new BigDecimal(arrayList.get(c - 1));
-                    	BigDecimal d2=new BigDecimal(arrayList.get(c + 1));
- /*here i hava modified*/ result = d.remainder(d2);
+                        
+                         result = new BigDecimal(arrayList.get(c - 1)).remainder(new BigDecimal(arrayList.get(c + 1)));
                     }
 
                     try {
@@ -873,10 +862,6 @@ class EvaluteExpression {
                         arrayList.remove(c - 1);
                     } catch (Exception ignored) {
                     }
-                
-                	}
-                	
-                	
                 } else {
                     continue;
                 }
