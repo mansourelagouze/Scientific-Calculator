@@ -63,10 +63,33 @@ public class Calca extends Application{
 		 Button equal =new Button("=");
 		 Button open =new Button("(");
 		 Button close =new Button(")");
-		 Button clear =new Button("C");
+		 Button clear =new Button("←");
 		 Button zero =new Button("0");
 		 Button reset=new Button("Reset");// end of button
-		
+		one.setStyle("-fx-font-size:20; -fx-color:#004646");
+                two.setStyle("-fx-font-size:20; -fx-color:#004646");
+                three.setStyle("-fx-font-size:20; -fx-color:#004646");
+                four.setStyle("-fx-font-size:20; -fx-color:#004646");
+                five.setStyle("-fx-font-size:20; -fx-color:#004646");
+                six.setStyle("-fx-font-size:20; -fx-color:#004646");
+                seven.setStyle("-fx-font-size:20; -fx-color:#004646");
+                eight.setStyle("-fx-font-size:20; -fx-color:#004646");
+                nine.setStyle("-fx-font-size:20; -fx-color:#004646");
+                zero.setStyle("-fx-font-size:20; -fx-color:#004646");
+                reset.setStyle("-fx-color:#C1C100 ");
+                clear.setStyle("-fx-color:#C1C100 ");
+                 plus.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                  minus.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   div.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   mul.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   mod.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   dot.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   sqrt.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+               square.setStyle("-fx-font-size:20; -fx-color:#CA0000");
+                   open.setStyle("-fx-font-size:20; -fx-color:#00356A");
+                   close.setStyle("-fx-font-size:20; -fx-color:#00356A");
+                   equal.setStyle("-fx-font-size:20; -fx-color:#BEBEBE");
+                  
 		 HBox hbox1=new HBox();
 		 hbox1.setSpacing(2);
 		 hbox1.getChildren().addAll(one,two,three,clear,reset);
@@ -350,7 +373,7 @@ public class Calca extends Application{
              if (!showExpression.equals("")) {
                  ch = showExpression.charAt(showExpression.length() - 1);
              }
-             if ((ch != ')' && isSquare == false)) {
+             if ((ch != ')' && isSquare == false && Character.isDigit(ch))) {
 
                  showExpression += ".";
                  hiddenExpression += ".";
@@ -385,16 +408,15 @@ public class Calca extends Application{
          isequal=false;
              }
                }
-         else {
-    	 showExpression += "+";
-         hiddenExpression += "+";
-         textarea.setText(showExpression);
-         isequal=false;
-             }
-     if(showExpression==""){
+     else if(showExpression==""||!Character.isDigit(ch)){
 //    	 showExpression = "0+";
 //         hiddenExpression = "0+";
 //         textarea.setText(showExpression); 
+     }else{
+	 showExpression += "+";
+     hiddenExpression += "+";
+     textarea.setText(showExpression);
+     isSquare = false;	 
      }
 
             }
@@ -422,9 +444,9 @@ public class Calca extends Application{
              }
      }
      else if(showExpression==""){
-//    	 showExpression = "0-";
-//         hiddenExpression = "0-";
-//         textarea.setText(showExpression); 
+showExpression += "-";
+         hiddenExpression += "-";
+         textarea.setText(showExpression);
      }
      else{
 	 showExpression += "-";
@@ -557,53 +579,31 @@ mod.setOnAction(new EventHandler<ActionEvent>() {
  sqrt.setOnAction(new EventHandler<ActionEvent>(){  
    
             @Override
-            public void handle(ActionEvent event) {  
+           public void handle(ActionEvent event) {
+                try{
+                    char ch = ' ';
+                    if(!showExpression.equals(""))
+                    {
+                    ch = showExpression.charAt(showExpression.length() - 1);
+                    }
+                    if(showExpression.equals(""))
+                    {
+                    showExpression += "√";
+                    hiddenExpression += "|";
+                    textarea.setText(showExpression);
+                    }
                 
-     try {
-           
-     if(showExpression.equals("error expression")){
-                 showExpression = "";
-         hiddenExpression = "";
-             }
-        
-        else if (showExpression.equals("")) {
+                  else if (!Character.isDigit(ch) && isSquare == false && ch != ')' ) {
 
-         showExpression += "√";
-         hiddenExpression += "|";
-         textarea.setText(showExpression);
+                    showExpression += "√";
+                    hiddenExpression += "|";
+                    textarea.setText(showExpression);
 
-     }
-           char ch = ' ';
-    ch = showExpression.charAt(showExpression.length() - 1);
-     if(Character.isDigit(ch)) 
-{
-	if(isequal){
-		textarea.setText("error expression");
-                showExpression = "";
-        hiddenExpression = "";
-	}
-        else  {
-
-showExpression += "√";
-hiddenExpression += "|";
-textarea.setText(showExpression);
-
-
-	}
-      
-       /*  {
-
-showExpression += "√";
-hiddenExpression += "|";
-textarea.setText(showExpression);
-
-}*/
-}
-       
-       
-     }catch (Exception e) {
-     }
- 
+                }
+                }
+                 catch(Exception e)
+                {
+                }
             }
      
  });
@@ -690,6 +690,7 @@ textarea.setEditable(false);
  });
 		 open.setOnAction(e->{
 		 char ch1 = ' ';
+                 
                   if(showExpression.equals("error expression")){
                  showExpression = "";
          hiddenExpression = "";}
@@ -703,9 +704,22 @@ textarea.setEditable(false);
                  isOpen = true;
                  countOpen++;
              }
+           
+             
 		 });
                  ///////////////////////////////////////////////////////////////// close brackets button is clicked
 		 close.setOnAction(e->{
+                      char ch1 = ' ';
+                      if (!showExpression.equals("")) {
+                 ch1 = showExpression.charAt(showExpression.length() - 1);
+             }
+                     if (ch1=='(') {
+                  textarea.setText("error expression");
+                  showExpression = "";
+         hiddenExpression = "";
+         isOpen=false;
+                 
+             }
 			 if (isOpen) {
                  showExpression += ")";
                  hiddenExpression += ")";
@@ -814,6 +828,7 @@ textarea.setEditable(false);
             }
         }
         contents = putIt.result(contents, "^", "%");
+        contents = putIt.result(contents, "|", "&");
         contents = putIt.result(contents, "*", "/");
         contents = putIt.result(contents, "+", "-");
         return (E)contents.get(0);
@@ -845,6 +860,13 @@ textarea.setEditable(false);
                                arrayList.add(e);
                                return arrayList;
                         }
+                        else if(arrayList.get(c +1).equals("."))
+                        {
+                         e="error expression";
+                               arrayList.clear();
+                               arrayList.add(e);
+                               return arrayList;
+                        }    
                         result = new BigDecimal(arrayList.get(c - 1)).divide(new BigDecimal(arrayList.get(c + 1)), scale, BigDecimal.ROUND_DOWN);
                     } else if (arrayList.get(c).equals("+")) {
                         result = new BigDecimal(arrayList.get(c - 1)).add(new BigDecimal(arrayList.get(c + 1)));
